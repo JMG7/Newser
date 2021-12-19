@@ -1,0 +1,9 @@
+{
+    "env": {
+        "DDBB_NAME": "AllFunds",
+        "MONGO_PRO_URL": "",
+        "MONGO_PRO_PARAMS": "",
+        "MONGO_DEV_URL": "mongodb://localhost:27017/",
+        "MONGO_DEV_PARAMS": "?retryWrites=true&w=majority"
+    }
+}
