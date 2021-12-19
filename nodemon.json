@@ -1,5 +1,7 @@
 {
     "env": {
+        "JWT_KEY": "D+LfPnz7V(u]6@cr",
+        "JWT_EXPIRATION": 604800,
         "DDBB_NAME": "AllFunds",
         "MONGO_PRO_URL": "",
         "MONGO_PRO_PARAMS": "",

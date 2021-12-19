@@ -4,7 +4,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a front dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+Run `npm run start-dev` for running the dev back server. The API URL is `http://localhost:3000/`.
 
 ## Code scaffolding
 
@@ -25,3 +27,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+
+
+## USER API
+
+To create user use POST `http://localhost:3000/api/user/signup` and send JSON values {"userName": "Value", "name": "Value", "password": "Value"}
+
+To login user use POST `http://localhost:3000/api/user/login` and send JSON values {"userName": "Value", "password": "Value"}
