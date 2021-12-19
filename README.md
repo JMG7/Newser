@@ -34,6 +34,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## USER API
 
-To create user use POST `http://localhost:3000/api/user/signup` and send JSON values {"userName": "Value", "name": "Value", "password": "Value"}
+To create a USER use POST `http://localhost:3000/api/user/signup` and send JSON values {"userName": "Value", "name": "Value", "password": "Value"}
 
 To login user use POST `http://localhost:3000/api/user/login` and send JSON values {"userName": "Value", "password": "Value"}
+
+## NEWS API
+
+To create a NEWS use POST `http://localhost:3000/api/news` and send JSON values {"title": "Value", "description": "Value", "content": "Value"}
+
+To get NEWS use GET `http://localhost:3000/api/news?archived=true` (archived param is optional).
+
+To archived a NEWS use PUT `http://localhost:3000/api/news/:id`
+
+To delete a NEWS use DELETE `http://localhost:3000/api/news/:id`. The NEWS has to be archived to be deleted.
