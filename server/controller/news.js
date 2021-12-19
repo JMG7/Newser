@@ -5,7 +5,7 @@ exports.createNews = (req, res, next) => {
         title: req.body.title,
         description: req.body.description,
         content: req.body.content,
-        author: req.body.author
+        author: req.userData.id
     });
     news.save()
         .then( result => {
