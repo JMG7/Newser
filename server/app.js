@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const express = require("express");
 const socketIO = require("socket.io");
 
+const newsRoutes = require("./routes/news");
+
 const app = express();
 const io = socketIO();
 
@@ -49,5 +51,8 @@ app.use((req, res, next) => {
     );
     next();
 });
+
+//EXPRESS
+app.use("/api/news", newsRoutes);
 
 module.exports = {io:io, app:app};
