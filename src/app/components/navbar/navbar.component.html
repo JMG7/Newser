@@ -13,10 +13,11 @@
       </ul>
     </div>
         
-    <form class="d-flex">
-      <input class="form-control me-3" type="search" placeholder="User">
-      <input class="form-control me-3" type="password" placeholder="Password" id="passwordLogin">
+    <form *ngIf="!userLoggedIn" [formGroup]= "userForm" class="d-flex" (submit)="onLogin()">
+      <input formControlName="userName" class="form-control me-3" type="search" placeholder="User">
+      <input formControlName="password" class="form-control me-3" type="password" placeholder="Password" id="passwordLogin">
       <button class="btn btn-outline-success" type="submit">Login</button>
     </form>
+    <button *ngIf="userLoggedIn" class="btn btn-outline-success" (click)="onLogout()">Logout</button>
   </div>
 </nav>
