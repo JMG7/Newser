@@ -3,6 +3,7 @@ const express = require("express");
 const socketIO = require("socket.io");
 
 const newsRoutes = require("./routes/news");
+const userRoutes = require("./routes/user");
 
 const app = express();
 const io = socketIO();
@@ -54,5 +55,9 @@ app.use((req, res, next) => {
 
 //EXPRESS
 app.use("/api/news", newsRoutes);
+app.use("/api/user", userRoutes);
+
+//SOCKETS IO
+// io.on("connection", function(client){(wsRoutes.connection(client, io))});
 
 module.exports = {io:io, app:app};
