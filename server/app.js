@@ -4,6 +4,7 @@ const socketIO = require("socket.io");
 
 const newsRoutes = require("./routes/news");
 const userRoutes = require("./routes/user");
+const wsRoutes = require("./routes/ws");
 
 const app = express();
 const io = socketIO();
@@ -58,6 +59,7 @@ app.use("/api/news", newsRoutes);
 app.use("/api/user", userRoutes);
 
 //SOCKETS IO
-// io.on("connection", function(client){(wsRoutes.connection(client, io))});
+// io.on("connection", function(client){(wsRoutes.wsRoutes(client, io))});
+io.on("connection", (() => {console.log("Conected");}));
 
 module.exports = {io:io, app:app};
