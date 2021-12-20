@@ -5,7 +5,7 @@ import { Subject } from "rxjs";
 import { environment } from "../../environments/environment";
 import { userData } from "../model/user.model"
 
-const BACKEND_URL = environment.apiUrl + "/user";
+const BACKEND_URL = environment.API_URL + "/user";
 
 @Injectable({ providedIn: "root" })
 export class UserService {
