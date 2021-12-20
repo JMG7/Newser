@@ -9,7 +9,7 @@ const BACKEND_URL = environment.apiUrl + "/user";
 
 @Injectable({ providedIn: "root" })
 export class UserService {
-    isAuthenticated = false;
+    isAuthenticated: boolean = false;
     id: string = "";
     token: string = "";
     userStatusListener = new Subject<boolean>();
