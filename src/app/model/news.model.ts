@@ -5,5 +5,5 @@ export interface NewsData {
     date: Date;
     content: string;
     author: string;
-    archiveDate: Date;
+    archiveDate?: Date;
 }
