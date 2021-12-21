@@ -1,4 +1,4 @@
-# AllFunds
+# Newser App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
 
@@ -43,6 +43,8 @@ To login user use POST `http://localhost:3000/api/user/login` and send JSON valu
 To create a NEWS use POST `http://localhost:3000/api/news` and send JSON values {"title": "Value", "description": "Value", "content": "Value"}
 
 To get NEWS use GET `http://localhost:3000/api/news?archived=true` (archived param is optional).
+
+To get ony a NEWS use GET `http://localhost:3000/api/news/one/:id`
 
 To archived a NEWS use PUT `http://localhost:3000/api/news/:id`
 
