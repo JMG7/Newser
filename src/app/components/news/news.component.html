@@ -1,43 +1,46 @@
-<div class="container-fluid p-4">
+<div class="accordion p-4" id="accordionExample">
+  <div class="accordion-item">
     <div *ngFor="let new of news" class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button
-            class="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseOne"
-            aria-expanded="true" aria-controls="collapseOne">
-            {{ new.title }}
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <div class="row p-2">
-                <div class="col">
-                    {{ new.date | date }}
-                </div>
+      <h2 class="accordion-header" id="headingOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          {{ new.title }}
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <div class="row p-2">
+            <div class="col">
+              {{ new.date | date }}
             </div>
-            <div class="row p-2">
-                <div class="col">
-                    {{ new.content }}
-                </div>
+          </div>
+          <div class="row p-2">
+            <div class="col">
+              {{ new.content }}
+            </div>
             <div class="p-4">
-                <button
-                    type="button"
-                    class="btn btn-primary"
-                    (click)="onArchive(new._id)"
-                    *ngIf="!new.archiveDate">
-                        Archivar
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-danger"
-                    (click)="onDelete(new._id)"
-                    *ngIf="new.archiveDate">
-                        Eliminar
-                </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="onArchive(new._id)"
+                *ngIf="!new.archiveDate">
+                  Archivar
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="onDelete(new._id)"
+                *ngIf="new.archiveDate">
+                  Eliminar
+              </button>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 </div>
