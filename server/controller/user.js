@@ -21,7 +21,6 @@ exports.createUser = (req, res, next) => {
                     });
                 })
                 .catch(error => {
-                    console.log(error.toString());
                     return res.status(500).json({
                         message: 'Error creating user!',
                         error: error
@@ -29,7 +28,6 @@ exports.createUser = (req, res, next) => {
                 });
         })
         .catch( error => {
-            console.log(error.toString());
             return res.status(500).json({
                 message: 'Error creating user!',
                 error: error
@@ -42,7 +40,6 @@ exports.loginUser = (req, res, next) => {
     User.findOne({ "userName": req.body.userName })
         .then(user => {
             if (!user) {
-                console.log(user);
                 return res.status(401).json({
                     message: "Auth failed"
                 });
@@ -76,7 +73,6 @@ exports.loginUser = (req, res, next) => {
             });
         })
         .catch(error => {
-            console.log({error: error});
             return res.status(401).json({
                 error: error
             });
