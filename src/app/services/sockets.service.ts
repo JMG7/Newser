@@ -11,7 +11,6 @@ export class WSService {
     }
 
     checkStatus(){
-        console.log('checkStatus');
         this.socket.on('connect', () => {
             console.log("Connected to the server");
         });
