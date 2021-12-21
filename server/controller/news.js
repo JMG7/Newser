@@ -9,6 +9,7 @@ exports.createNews = (req, res, next) => {
     });
     news.save()
         .then( result => {
+            req.app.io.emit('NewsAdded', {id: result._id});
             return res.status(201).json({
                 message: "News created!",
                 news: {
@@ -18,7 +19,6 @@ exports.createNews = (req, res, next) => {
             });
         })
         .catch(error => {
-            console.log(error.toString());
             return res.status(500).json({
                 message: 'Error creating the news!',
                 error: error
@@ -46,7 +46,23 @@ exports.getNews = (req, res, next) => {
             });
         })
         .catch( error => {
-            console.log(error);
+            return res.status(500).json({
+                message: 'Error getting News!',
+                error: error
+            });
+        });
+}
+
+exports.getOneNews = (req, res, next) => {
+    News
+        .findOne({ "_id": req.params.id})
+        .then( result => {
+            return res.status(200).json({
+                message: "News got satisfactorily!",
+                news: result
+            });
+        })
+        .catch( error => {
             return res.status(500).json({
                 message: 'Error getting News!',
                 error: error
@@ -61,7 +77,6 @@ exports.archiveNews = (req, res, next) => {
             { "archiveDate": Date.now()})
         .then( result => {
             if(result){
-                console.log(result);
                 return res.status(200).json({
                     message: 'News archived successfully',
                     news: result
@@ -73,7 +88,6 @@ exports.archiveNews = (req, res, next) => {
             }
         })
         .catch( error => {
-            console.log(error);
             return res.status(500).json({
                 message: 'Error archiving the news',
                 error: error
@@ -95,7 +109,6 @@ exports.deleteNews = (req, res, next) => {
             }
         })
         .catch( error => {
-            console.log(error);
             return res.status(500).json({
                 message: 'Error deleting the news',
                 error: error

@@ -1,7 +1,7 @@
-const app = require("./app").app;
-const io = require("./app").io;
+const app = require("./app").app
 const debug = require("debug")("node-angular");
 const http = require("http");
+const socket = require("socket.io");
 
 const normalizePort = val => {
   var port = parseInt(val, 10);
@@ -41,5 +41,9 @@ app.set("port", port);
 const server = http.createServer(app);
 server.on("error", onError);
 server.on("listening", onListening);
+
+//Sockets
+const io = socket(server, {cors: {origin: '*'}})
+app.io = io;
+
 server.listen(port);
-io.listen(server, {cors: {origin: '*'}});

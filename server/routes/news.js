@@ -6,6 +6,7 @@ const NewsController = require("../controller/news")
 
 router.post("/", checkToken, NewsController.createNews);
 router.get("/:archived?", NewsController.getNews);
+router.get("/one/:id", NewsController.getOneNews);
 router.put("/:id", NewsController.archiveNews);
 router.delete("/:id", NewsController.deleteNews);
 
