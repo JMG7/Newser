@@ -15,14 +15,26 @@ export class NewsService {
     news:NewsData[]  = [];
     newsListener = new Subject<NewsData[]>();
     wsAddedNewsListener: Subscription;
+    wsArchivedNewsListener: Subscription;
+    wsDeletedNewsListener: Subscription;
     
     constructor(
         private http: HttpClient,
         private wsService: WSService
     ) {
-        this.wsAddedNewsListener = this.wsNews().subscribe(
+        this.wsAddedNewsListener = this.wsNewsAdded().subscribe(
             (news: any) => {
                 this.getOneNews(news.id);
+            }
+        );
+        this.wsArchivedNewsListener = this.wsNewsArchived().subscribe(
+            (news: any) => {
+                this.popNews(news.id);
+            }
+        );
+        this.wsDeletedNewsListener = this.wsNewsDeleted().subscribe(
+            (news: any) => {
+                this.popNews(news.id);
             }
         );
     }
@@ -81,9 +93,19 @@ export class NewsService {
         return this.http.delete(BACKEND_URL + '/' + newsID);
     }
 
-    //SOCKET
-    wsNews() {
-        return this.wsService.listen("NewsAdded");
+    private popNews(newsID: string) {
+        this.news = this.news.filter(news => news._id !== newsID);
+        this.newsListener.next([...this.news]);
     }
 
+    //SOCKET
+    wsNewsAdded() {
+        return this.wsService.listen("NewsAdded");
+    }
+    wsNewsArchived() {
+        return this.wsService.listen("NewsArchived");
+    }
+    wsNewsDeleted() {
+        return this.wsService.listen("NewsDeleted");
+    }
 }

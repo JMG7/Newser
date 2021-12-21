@@ -77,6 +77,7 @@ exports.archiveNews = (req, res, next) => {
             { "archiveDate": Date.now()})
         .then( result => {
             if(result){
+                req.app.io.emit('NewsArchived', {id: req.params.id});
                 return res.status(200).json({
                     message: 'News archived successfully',
                     news: result
@@ -99,6 +100,7 @@ exports.deleteNews = (req, res, next) => {
     News.deleteOne({ "_id": req.params.id, "archiveDate": {$ne:null} })
         .then( result => {
             if(result.deletedCount){
+                req.app.io.emit('NewsDeleted', {id: req.params.id});
                 return res.status(200).json({
                     message: 'News deleted successfully',
                 });
